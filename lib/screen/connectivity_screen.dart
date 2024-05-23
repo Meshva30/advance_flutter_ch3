@@ -12,8 +12,22 @@ class ConnectivityScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data!.contains(ConnectivityResult.mobile) ||
               snapshot.data!.contains(ConnectivityResult.wifi)) {
-            return Column(
-              children: [],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset(
+                        'assets/img/m1.jpeg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             );
           } else {
             return Column(
@@ -24,37 +38,40 @@ class ConnectivityScreen extends StatelessWidget {
                       height: 300,
                       width: 370,
                       child: Image.asset(
-                        "assets/img/images.png",
+                        "assets/img/bg1.png",
                         fit: BoxFit.cover,
                       )),
                 ),
+                SizedBox(
+                  height: 30,
+                ),
                 Text(
-                  'Oooops!',
+                  'No Internet Connection',
                   style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 40),
+                      fontSize: 25),
                 ),
                 Text(
                   textAlign: TextAlign.center,
-                  'No Internet Connection found Checkyour connection',
-                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  ' Check your connection,then refresh the page.',
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
                 ),
                 SizedBox(
                   height: 100,
                 ),
                 Container(
                   height: 50,
-                  width: 250,
+                  width: 130,
                   decoration: BoxDecoration(
-                      color: Colors.redAccent,
-                      borderRadius: BorderRadius.circular(10)),
+                      border: Border.all(color: Colors.blue, width: 2),
+                      borderRadius: BorderRadius.circular(20)),
                   alignment: Alignment.center,
                   child: Text(
-                    'Try Again',
+                    'Refresh',
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                        color: Colors.blue,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
                 )
